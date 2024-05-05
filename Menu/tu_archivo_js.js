@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+ddocument.addEventListener('DOMContentLoaded', function () {
     const icono = document.getElementById('icono');
     const listaDesplegable = document.getElementById('listaDesplegable');
   

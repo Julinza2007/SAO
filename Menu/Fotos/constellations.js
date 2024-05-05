@@ -1,7 +1,7 @@
 const canvas = document.getElementById('constellations');
 const ctx = canvas.getContext('2d');
 
-canvas.width = window.innerWidth;
+canvas.width = Math.min(window.innerWidth, document.body.clientWidth);
 canvas.height = window.innerHeight;
 
 const stars = [];
@@ -26,14 +26,13 @@ class Star {
   }
 
   update() {
-    this.y += this.direction * this.velocity * 10; // Mueve las estrellas verticalmente
+    this.y += this.direction * this.velocity * 10;
     this.opacity += this.direction * this.velocity;
 
     if (this.opacity <= 0 || this.opacity >= 1) {
       this.direction *= -1;
     }
 
-    // Mantén las estrellas dentro de los límites del lienzo
     if (this.y < 0 || this.y > canvas.height) {
       this.y = Math.random() * canvas.height;
     }
@@ -41,6 +40,7 @@ class Star {
 }
 
 function createConstellation() {
+  stars.length = 0; // Limpiar el array de estrellas antes de crear nuevas
   for (let i = 0; i < 100; i++) {
     const x = Math.random() * canvas.width;
     const y = Math.random() * canvas.height;
@@ -61,3 +61,9 @@ function animateConstellation() {
 
 createConstellation();
 animateConstellation();
+
+window.addEventListener('resize', function () {
+  canvas.width = Math.min(window.innerWidth, document.body.clientWidth);
+  canvas.height = window.innerHeight;
+  createConstellation();
+});
