@@ -1,35 +1,23 @@
 <!DOCTYPE html>
-<html class="gray-background">
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="../style.css">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../Start/style.css">
     <title>SAO fan page</title>
 </head>
-<body>
+<body style="background-color: rgba(128, 128, 128, 0.54);">
     <div id= "welcome" class="SAO">
     <h1>Welcome to Sword Art Online !</h1>
     </div>
     
-    <div id="icono"><img src="UsuarioSAO.png"></img></div>
+    <div id="desplegable">
+        <img id="img" onclick="handleClick(event)" width="150px" height="150px" src="img/UsuarioSAO.png">   
+    </div>
 
-<ul class="SAO sin_puntos" id="listaDesplegable">
-    <li><div class="circulo"><a href="Fotos/fotos.html">Fotos</a></div></li>
-    <li><div class="circulo"><a href="Historia/historia.html">Historia</a></div></li>
-    <li><div class="circulo"><a href="Personajes/personajes.html">Personajes</a></div></li>
-    <li><div class="circulo">Skills</div></li>
-    <li><div class="circulo">Inventory</div></li>
-    <li><div id="Logout" class="circulo"><a href="#" onclick="playLogoutSound()"><img src="Logout.png"></img></a></div></li>
-</ul>
-<script src="tu_archivo_js.js"></script>
-<script>
-    // Cargar el sonido de antemano
-    var logoutSound = new Audio("error.mp3");
-
-    function playLogoutSound() {
-        // Reproducir el sonido
-        logoutSound.play();
-    }
-</script>
 </body>
-
-
+<audio id="love" src="../audios/Oh! One True Love.mp3"></audio>
+<audio id="error" src="../audios/error.mp3"></audio>
+<audio id="audio" src= "../audios/algo.wav"></audio>
+<script src="menu.js"></script>
 </html>
+

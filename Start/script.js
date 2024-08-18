@@ -1,13 +1,12 @@
-document.getElementById('link').addEventListener('click', function (event) {
+function handleClick(event) {
     event.preventDefault();
-
     // Reproduce el audio
-    var audio = document.getElementById('audio');
+    let audio = document.getElementById('audio');
     audio.play();
 
     // Muestra el overlay al hacer clic en link_start y aplica la clase para la animación
-    var overlay = document.getElementById('overlay');
-    overlay.style.backgroundImage = 'url(linkstart.gif)';
+    let overlay = document.getElementById('overlay');
+    overlay.style.backgroundImage = 'url(Start/linkstart.gif)';
     overlay.style.display = 'block';
     
     // Agrega la clase para iniciar la animación
@@ -17,4 +16,5 @@ document.getElementById('link').addEventListener('click', function (event) {
     setTimeout(function () {
         window.location.href = event.target.href;
     }, 5250);
-});
+}
+
