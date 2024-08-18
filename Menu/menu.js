@@ -48,6 +48,7 @@ let menu = document.createElement('div');
         cont++;
         error.play();
         console.log(cont);
+
         if(cont === 1){
           errorP.textContent = '¿Creíste realmente que ibas a salir no? Te recomiendo que no continúes...';
         }
@@ -136,6 +137,10 @@ let menu = document.createElement('div');
 
 
 function handleClick(event){
+  errorP.textContent = '';
+  cont = 0;
+  audioLove.pause();
+  audioLove.currentTime = 0;
   audio.play();
     if(menu.style.display === 'none'){
         menu.style.display = 'block';
