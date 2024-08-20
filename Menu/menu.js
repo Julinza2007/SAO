@@ -5,11 +5,16 @@ let error = document.getElementById('error');
 let errorP= document.createElement('p');
 errorP.style= 'margin-top: 40px;'
 document.body.append(errorP);
+let hearth = document.createElement('img');
+hearth.src = 'img/hearth.png';
+hearth.classList.add('hearth');
+let aHearth = document.createElement('a');
+aHearth.href = 'https://www.youtube.com/watch?v=FIR-hrPXxzA';
+
 audioLove.volume = 0.1;
 error.volume = 0.1;
 audio.volume = 0.1;  // Reduce el volumen a la mitad
 let cont = 0;
-
 
 let menu = document.createElement('div');
     menu.style.display = 'none';
@@ -117,24 +122,27 @@ let menu = document.createElement('div');
         errorP.textContent = 'Ganas de amor... Ganas de gastar todo ese amor acumulado, lleno de desamores...';
       }
 
-
       else if(cont === 210){
+        errorP.textContent = 'Que tristeza, que tristeza...';
+      }
+
+      else if(cont === 220){
         error.volume = 0.1;
         audioLove.pause();
         audioLove.currentTime = 0;
         errorP.textContent = 'Vaya...';
       }
       
-      else if(cont === 220){
+      else if(cont === 230){
         errorP.textContent = 'No creas que YO, soy ese chico...';
       }
 
-      else if(cont == 225){
+      else if(cont == 240){
         cont=0;
+       aHearth.append(hearth);
+       menu.append(aHearth);
       }
     });
-
-
 
 function handleClick(event){
   errorP.textContent = '';

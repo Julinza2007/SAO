@@ -68,13 +68,13 @@ a{
 }
 
 div#desplegable {
-  margin-left: 40%;
+  text-align: center;
 }
 
 div#desplegable img#img{
   cursor: pointer;
   transition: transform 0.5s ease;
-  margin-bottom: 25px;
+  margin-bottom: 2.5%;
 }
 
 div#desplegable img#img:hover {
@@ -85,17 +85,17 @@ div#desplegable div#menu p{
   text-align: center;
   border-radius: 10px;
   background-color: skyblue;
-  margin-right: 1000px;
-  padding-bottom: 4px;
+  margin: 0 45% 1% 45%;
+  padding-bottom: 0.5%;
   font-size: 1.9em;
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 10% 10% 10% rgba(0, 0, 0, 0.5);
   transition: transform 0.5s ease;
 }
 
 div#desplegable div#menu p:hover {
   background-color: orangered;
-  border: 1px solid black;
-  box-shadow: 10px 10px 10px rgba(255, 68, 0, 0.546);  
+  border: 1% solid black;
+  box-shadow: 10% 10% 10% rgba(255, 68, 0, 0.546);  
   transform: scale(1.2);
 }
 
@@ -108,29 +108,38 @@ div#desplegable div#menu p a{
   color: black;
 }
 
-@media (max-width: 1024px) {
-  body{
-    background-color: yellow;
-  }
-  div#desplegable div#menu p{
-    margin-right: 450px;
-  }
-}
-
-@media (max-width: 768px) {
-  body{
-    background-color: red;
-  }
-  div#desplegable div#menu p{
-    margin-right: 400px;
-  }
-}
-
 
 
 html.black-background {
   background-color: black;
 }
+
+.hearth{
+  width: 100px;
+  height: 100px;
+  animation-name: hearth;
+  animation-iteration-count: infinite;
+  animation-duration: 0s; /* duración de la animación en estado normal */
+}
+
+.hearth:hover{
+  animation-duration: 1.2s; /* duración de la animación en estado :hover */
+}
+
+@keyframes hearth {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+
 
 /* FOTOS */
 
