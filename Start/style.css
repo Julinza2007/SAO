@@ -7,6 +7,23 @@ font-family:'compi';
 src: url(../fonts/compi.ttf) format('truetype');
 }
 
+div#atras{
+  text-align: center;
+  background: darkgray;
+  color: black;
+  height: 5%;
+  width: 10%;
+  margin: 0 auto;
+  border-radius: 12.5px;
+  transition: transform 0.3s ease;
+  font-family: 'SAO', sans-serif;
+  font-size: 3em;
+}
+
+div#atras:hover {
+  background-color: orangered;
+  transform: scale(1.2);
+}
 
 a{
   outline: none;
@@ -185,3 +202,10 @@ p{
   font-family: 'SAO', sans-serif;
   font-size: 20px;
 }
+
+/*  Historia */
+
+
+
+/*  Personajes */
+

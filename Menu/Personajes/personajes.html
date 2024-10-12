@@ -1,28 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <link rel="stylesheet" href="../style.css">
-    <title>SAO fan page</title>
+  <link rel="stylesheet" href="../../Start/style.css">
+  <meta charset="UTF-8">
+  <title>Personajes de Sword Art Online</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #cecaca; padding: 20px; }
+    h1 { text-align: center; }
+    .character { background-color: #fff; border: 1px solid #ccc; border-radius: 5px; padding: 15px; margin: 10px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+    .character h2 { margin-top: 0; }
+    .character p { margin: 5px 0; }
+    .character img { width: 100%; border-radius: 3%; }
+    #characters-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-gap: 10px;
+
+    }
+
+  </style>
 </head>
 <body>
-<div id="menu" class="menues">
-<ul>
-    <div class="circulo"><li><a href="../index.html">Fotos</a></li></div>
-    <li>Personajes</li>
-    <li>Historia</li>
-    <li>Sinopsis</li>
-</ul>
-</div>
-<footer><h5>@copyright Julinza's Creation 2024</h5></footer>
+    <div id='atras'>
+        <a href="../menu.html">Atrás</a>
+    </div>
+
+  <h1>Personajes de Sword Art Online</h1>
+  <div id="characters-container">
+
+  </div>
+
+  <script>
+
+    fetch('characters.json')
+    .then(res => res.json())
+    .then(data => {
+      let container = document.getElementById('characters-container');
+      for(let character of data.characters) {
+          let charDiv = document.createElement('div');
+          charDiv.className = 'character';
+          charDiv.innerHTML = `
+            <h1 style="font-family: 'SAO';">${character.name}</h1>
+            <img src="${character.img}" alt="${character.name}">
+            <p><strong>Edad:</strong> ${character.age}</p>
+            <p><strong>Profesión:</strong> ${character.profession}</p>
+            <p><strong>Tipo de Espada:</strong> ${character.typeOfSword}</p>
+          `;
+          container.appendChild(charDiv);
+      }
+    })
+  </script>
 </body>
-
-
-
-
-
-
-
-
-
-
 </html>
+
+
+
+
+
