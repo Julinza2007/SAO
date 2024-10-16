@@ -7,7 +7,7 @@ font-family:'compi';
 src: url(../fonts/compi.ttf) format('truetype');
 }
 
-div#atras{
+div.atras{
   text-align: center;
   background: darkgray;
   color: black;
@@ -20,10 +20,46 @@ div#atras{
   font-size: 3em;
 }
 
-div#atras:hover {
+div.atras:hover {
   background-color: orangered;
   transform: scale(1.2);
 }
+
+/*Animacion Fondo*/
+.container {
+  inset: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+.space {
+  --size: 2px;
+  --space-layer: 
+    4vw 50vh 0 #fff,
+    18vw 88vh 0 #fff,
+    73vw 14vh 0 #fff;
+  
+  width: var(--size);
+  height: var(--size);
+  background: white;
+  box-shadow: var(--space-layer);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.75;
+}
+
+.space {
+   animation: move var(--duration) linear infinite;
+}
+
+@keyframes move {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100vh); }
+}
+
+
+
 
 a{
   outline: none;
@@ -209,3 +245,34 @@ p{
 
 /*  Personajes */
 
+.container {
+    inset: 0;
+    position: fixed;
+    z-index: -1;
+  }
+  
+  .space {
+    --size: 2px;
+    --space-layer: 
+      4vw 50vh 0 #fff,
+      18vw 88vh 0 #fff,
+      73vw 14vh 0 #fff;
+    
+    width: var(--size);
+    height: var(--size);
+    background: white;
+    box-shadow: var(--space-layer);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.75;
+  }
+  
+  .space {
+     animation: move var(--duration) linear infinite;
+  }
+  
+  @keyframes move {
+    from { transform: translateY(0); }
+    to { transform: translateY(-100vh); }
+  }

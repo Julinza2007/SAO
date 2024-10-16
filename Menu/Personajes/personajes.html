@@ -5,23 +5,43 @@
   <meta charset="UTF-8">
   <title>Personajes de Sword Art Online</title>
   <style>
-    body { font-family: Arial, sans-serif; background-color: #cecaca; padding: 20px; }
+    body { font-family: Arial, sans-serif; background-color: black; padding: 20px; }
     h1 { text-align: center; }
-    .character { background-color: #fff; border: 1px solid #ccc; border-radius: 5px; padding: 15px; margin: 10px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
-    .character h2 { margin-top: 0; }
+    .character { background-color: #ffffffbc; border: 1px solid #ccc; border-radius: 5px; padding: 15px; margin: 10px 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.1); }
+    .character h2 { margin-top: 0;}
     .character p { margin: 5px 0; }
     .character img { width: 100%; border-radius: 3%; }
+    #description { font-family:Arial, Helvetica, sans-serif; font-size: 0.9em;}
     #characters-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 10px;
-
+        grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+        grid-gap: 15px;
     }
+.character-link:hover {
+    transform: scale(1.2);
+    color: orangered;
+}
+
+p.links{
+  text-align: center;
+  padding: 10px;
+  margin-right: 25%;
+  margin-left: 25%;
+  margin-top: 5%;
+  background-color: rgba(218, 165, 32, 0.656);
+}
+
+p.links:hover{
+  background-color: orangered;
+  color: white;
+}
+
 
   </style>
 </head>
+
 <body>
-    <div id='atras'>
+    <div class='atras'>
         <a href="../menu.html">Atrás</a>
     </div>
 
@@ -30,6 +50,13 @@
 
   </div>
 
+
+
+  <div class="container">
+    <div class="space space-1"></div>
+    <div class="space space-2"></div>
+    <div class="space space-3"></div>
+  </div>
   <script>
 
     fetch('characters.json')
@@ -45,10 +72,98 @@
             <p><strong>Edad:</strong> ${character.age}</p>
             <p><strong>Profesión:</strong> ${character.profession}</p>
             <p><strong>Tipo de Espada:</strong> ${character.typeOfSword}</p>
+            <p><strong>Descripción:</strong> <span id="description">${character.description}</span></p>
+            <p class="links"><strong><a href= "${character.link}">Más información</a></strong></p>
           `;
+          
           container.appendChild(charDiv);
+          
+          document.querySelectorAll(".character img").forEach((img) => {
+    img.addEventListener("mouseover", () => {
+      img.parentElement.style.transform = "scale(1.1)";
+      img.parentElement.style.transition = "transform 0.2s ease-in-out";
+    });
+    img.addEventListener("mouseout", () => {
+      img.parentElement.style.transform = "scale(1)";
+      img.parentElement.style.transition = "transform 0.2s ease-in-out";
+    });
+  });
+
       }
-    })
+    });
+
+    const COLORS = [
+  "#fff2",
+  "#fff4",
+  "#fff7",
+  "#fffc",
+  "#ffd7d7",
+  "#ffc5c5",
+  "#ffb6b6",
+  "#ff99cc",
+  "#ff66cc",
+  "#ff33cc",
+  "#cc66ff",
+  "#cc33ff",
+  "#9966ff",
+  "#6633ff",
+  "#3300ff",
+  "#0000ff",
+  "#00ccff",
+  "#00ffff",
+  "#33cccc",
+  "#66cccc",
+  "#99cccc",
+  "#cccccc",
+  "#ffcc00",
+  "#ffd700",
+  "#ff9900",
+  "#ff6600",
+  "#ff3300",
+  "#cc3300",
+  "#993300",
+  "#663300",
+  "#330000",
+];
+
+const generateSpaceLayer = (size, selector, totalStars, duration) => {
+  const layer = [];
+  for (let i = 0; i < totalStars; i++) {
+    let color = COLORS[Math.floor(Math.random() * COLORS.length)];
+    const x = Math.floor(Math.random() * 100);
+    const y = Math.floor(Math.random() * 100);
+    layer.push(`${x}vw ${y}vh 0 ${color}, ${x}vw ${y + 100}vh 0 ${color}`);
+  }
+  const container = document.querySelector(selector);
+  container.style.setProperty("--size", size);
+  container.style.setProperty("--duration", duration);
+  container.style.setProperty("--space-layer", layer.join(","));
+};
+
+const updateStarsColor = (selector, colors, interval) => {
+  const stars = document.querySelectorAll(selector);
+  let currentColorIndex = 0;
+  setInterval(() => {
+    stars.forEach((star) => {
+      star.style.setProperty("--color", colors[currentColorIndex]);
+    });
+    currentColorIndex = (currentColorIndex + 1) % colors.length;
+  }, interval);
+};
+
+generateSpaceLayer("2px", ".space-1", 250, "25s");
+generateSpaceLayer("3px", ".space-2", 100, "20s");
+generateSpaceLayer("6px", ".space-3", 25, "15s");
+
+updateStarsColor(".star", COLORS, 5000);
+
+
+  
+
+
+
+
+
   </script>
 </body>
 </html>
