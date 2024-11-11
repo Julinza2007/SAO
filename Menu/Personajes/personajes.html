@@ -117,13 +117,14 @@ p.links:hover{
     <div class="space space-2"></div>
     <div class="space space-3"></div>
   </div>
-  <script>
 
-    fetch('characters.json')
-    .then(res => res.json())
-    .then(data => {
-      let container = document.getElementById('characters-container');
-      for(let character of data.characters) {
+  <script>
+    fetch('https://apisao.onrender.com/api/characters')
+      .then(res => res.json())
+      .then(data => {
+        let container = document.getElementById('characters-container');
+        for (let i = 0; i < data.length; i++) {
+          let character = data[i];
           let charDiv = document.createElement('div');
           charDiv.className = 'character';
           charDiv.innerHTML = `
@@ -139,18 +140,17 @@ p.links:hover{
           container.appendChild(charDiv);
           
           document.querySelectorAll(".character img").forEach((img) => {
-    img.addEventListener("mouseover", () => {
-      img.parentElement.style.transform = "scale(1.1)";
-      img.parentElement.style.transition = "transform 0.2s ease-in-out";
-    });
-    img.addEventListener("mouseout", () => {
-      img.parentElement.style.transform = "scale(1)";
-      img.parentElement.style.transition = "transform 0.2s ease-in-out";
-    });
-  });
-
-      }
-    });
+            img.addEventListener("mouseover", () => {
+              img.parentElement.style.transform = "scale(1.1)";
+              img.parentElement.style.transition = "transform 0.2s ease-in-out";
+            });
+            img.addEventListener("mouseout", () => {
+              img.parentElement.style.transform = "scale(1)";
+              img.parentElement.style.transition = "transform 0.2s ease-in-out";
+            });
+          });
+        }
+      });
 
     const COLORS = [
   "#fff2",
